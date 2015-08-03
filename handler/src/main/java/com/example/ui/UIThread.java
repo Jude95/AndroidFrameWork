@@ -5,7 +5,7 @@ import com.example.os.Looper;
 
 /**
  * Created by Mr.Jude on 2015/8/3.
- * 这里模拟UI线程
+ * 杩欓噷妯℃嫙UI绾跨▼
  */
 public class UIThread extends Thread {
 

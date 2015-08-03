@@ -8,19 +8,19 @@ import java.util.concurrent.LinkedBlockingDeque;
 public class MessageQueue {
 
     /**
-     * ÏûÏ¢¶ÓÁĞ
+     * æ¶ˆæ¯é˜Ÿåˆ—
      */
     private LinkedBlockingDeque<Message> queue = new LinkedBlockingDeque<>();
-    //AndroidÔ´ÂëµÄÊµÏÖÃ²ËÆ×Ô¼ºÊµÏÖÁËÒ»¸öÏß³Ì°²È«µÄQueue£¬ºÜ¸´ÔÓ¡£ÕâÀï¼òµ¥Ä£ÄâÔ­Àí¡£ÆäÊµÕâ¸öBlockingDequeÒ²×Ô´øÍ¬²½ËøÎ´Ê¹ÓÃ¡£
+    //Androidæºç çš„å®ç°è²Œä¼¼è‡ªå·±å®ç°äº†ä¸€ä¸ªçº¿ç¨‹å®‰å…¨çš„Queueï¼Œå¾ˆå¤æ‚ã€‚è¿™é‡Œç®€å•æ¨¡æ‹ŸåŸç†ã€‚å…¶å®è¿™ä¸ªBlockingDequeä¹Ÿè‡ªå¸¦åŒæ­¥é”æœªä½¿ç”¨ã€‚
 
 
     /**
-     * Ëø
+     * é”
      */
     private final Object lock = new Object();
 
     /**
-     * ·µ»ØÒ»¸ömessage.Ã»ÓĞÔò×èÈû¡£Ö±µ½ÓĞÁËÔÙ·µ»Ø¡£
+     * è¿”å›ä¸€ä¸ªmessage.æ²¡æœ‰åˆ™é˜»å¡ã€‚ç›´åˆ°æœ‰äº†å†è¿”å›ã€‚
      * @return
      */
     Message next(){
@@ -28,12 +28,12 @@ public class MessageQueue {
 
             if (queue.peek() !=null){
 
-                //Èç¹û¶ÓÁĞÀïÓĞMessage£¬Ö±½Ó·µ»Ø
+                //å¦‚æœé˜Ÿåˆ—é‡Œæœ‰Messageï¼Œç›´æ¥è¿”å›
                 return queue.poll();
 
             }else {
 
-                //Èç¹û¶ÓÁĞÀïÃ»ÓĞMessage£¬Ôò×èÈû£¬µÈ´ıĞÂ¼ÓÈëMessageÊ±»½ĞÑ
+                //å¦‚æœé˜Ÿåˆ—é‡Œæ²¡æœ‰Messageï¼Œåˆ™é˜»å¡ï¼Œç­‰å¾…æ–°åŠ å…¥Messageæ—¶å”¤é†’
                 synchronized (lock){
                     try {
                         lock.wait();
@@ -49,8 +49,8 @@ public class MessageQueue {
 
 
     /**
-     * Ïò¶ÓÁĞ¼ÓÈëÒ»¸öMessage£¬²¢»½ĞÑÇ°ÃæµÄwait
-     * Õâ¸öº¯Êı¿ÉÒÔÔÚÈÎÒâÏß³Ìµ÷ÓÃ¡£
+     * å‘é˜Ÿåˆ—åŠ å…¥ä¸€ä¸ªMessageï¼Œå¹¶å”¤é†’å‰é¢çš„wait
+     * è¿™ä¸ªå‡½æ•°å¯ä»¥åœ¨ä»»æ„çº¿ç¨‹è°ƒç”¨ã€‚
      * @param message
      */
     void enqueueMessage(Message message){

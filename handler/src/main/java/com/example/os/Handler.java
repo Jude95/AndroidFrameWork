@@ -25,12 +25,12 @@ public class Handler {
         send(new Message(runnable,0));
     }
 
-    //ÏòLooper·¢ËÍMessage¡£Looper»áÔÚËûµÄÏß³ÌÉÏµ÷ÓÃ×Ô¼ºµÄdispatchMessage()
+    //å‘Looperå‘é€Messageã€‚Looperä¼šåœ¨ä»–çš„çº¿ç¨‹ä¸Šè°ƒç”¨è‡ªå·±çš„dispatchMessage()
     public void send(Message message){
         looper.mQueue.enqueueMessage(message);
     }
 
-    //ÍùÏÂ¾ÍÊÇ·ÖÅä´¦ÀíMessageµÄÊÂÁË¡£ÓëÏß³ÌÎŞ¹Ø¡£
+    //å¾€ä¸‹å°±æ˜¯åˆ†é…å¤„ç†Messageçš„äº‹äº†ã€‚ä¸çº¿ç¨‹æ— å…³ã€‚
     public void dispatchMessage(Message msg) {
         if (msg.callback != null) {
             handleCallback(msg);

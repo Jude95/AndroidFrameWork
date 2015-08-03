@@ -6,14 +6,14 @@ package com.example.os;
 public class Looper {
 
     /**
-     * Ã¿¸öÏß³Ì¶¼Ö»ÓĞÒ»¸ö¶ÔÏó(Looper)¡£
-     * ThreadLocal ±¾ÖÊ¿ÉÒÔ¼òµ¥Àí½âÎª HashMap<Thread,Object>.
-     * ¶øgetÓësetµÄKeyÄ¬ÈÏÎªµ±Ç°Ïß³Ì
+     * æ¯ä¸ªçº¿ç¨‹éƒ½åªæœ‰ä¸€ä¸ªå¯¹è±¡(Looper)ã€‚
+     * ThreadLocal æœ¬è´¨å¯ä»¥ç®€å•ç†è§£ä¸º HashMap<Thread,Object>.
+     * è€Œgetä¸setçš„Keyé»˜è®¤ä¸ºå½“å‰çº¿ç¨‹
      */
     private static ThreadLocal<Looper> sThreadLocal = new ThreadLocal<>();
 
     /**
-     * ÏûÏ¢¶ÓÁĞ
+     * æ¶ˆæ¯é˜Ÿåˆ—
      */
     static MessageQueue mQueue;
 
@@ -23,7 +23,7 @@ public class Looper {
     }
 
     /**
-     * ×¼±¸£¬newÒ»¸öLooper·Å½øThreadLocal¡£
+     * å‡†å¤‡ï¼Œnewä¸€ä¸ªLooperæ”¾è¿›ThreadLocalã€‚
      */
     public static void prepare(){
         if (sThreadLocal.get() != null) {
@@ -33,7 +33,7 @@ public class Looper {
     }
 
     /**
-     * µ±µ÷ÓÃÁËÕâ¸ö·½·¨£¬¾Í¿ªÊ¼ÔÚÕâ¸öÏß³ÌÉÏÎŞÏŞÑ­»·
+     * å½“è°ƒç”¨äº†è¿™ä¸ªæ–¹æ³•ï¼Œå°±å¼€å§‹åœ¨è¿™ä¸ªçº¿ç¨‹ä¸Šæ— é™å¾ªç¯
      */
     public static void loop(){
         final Looper me = myLooper();
@@ -43,21 +43,21 @@ public class Looper {
 
 
         while (true){
-            // »ñÈ¡ÏÂÒ»¸öMessage¡£ÕâÀïÓÀÔ¶»áÈ¡µ½Ò»¸ö¡£
-            // Ö»ÓĞµ±´æ½øÈ¥nullµÄÊ±ºò²Å»á·µ»Ønull¡£
-            // ¶øµ±¶ÓÁĞÎª¿ÕÊ±£¬»á×èÈûÖ±µ½¶ÓÁĞÓĞMessageÁËÔÙ·µ»Ø¡£
+            // è·å–ä¸‹ä¸€ä¸ªMessageã€‚è¿™é‡Œæ°¸è¿œä¼šå–åˆ°ä¸€ä¸ªã€‚
+            // åªæœ‰å½“å­˜è¿›å»nullçš„æ—¶å€™æ‰ä¼šè¿”å›nullã€‚
+            // è€Œå½“é˜Ÿåˆ—ä¸ºç©ºæ—¶ï¼Œä¼šé˜»å¡ç›´åˆ°é˜Ÿåˆ—æœ‰Messageäº†å†è¿”å›ã€‚
             Message msg = mQueue.next();
 
-            //Èç¹ûÈ¡µ½null£¬¾ÍÍË³ö
+            //å¦‚æœå–åˆ°nullï¼Œå°±é€€å‡º
             if (msg == null)return;
 
-            //È¡µ½ÁË¾Í½»¸øMessageµÄÄ¿±êHandlerÈ¥´¦Àí¡£
+            //å–åˆ°äº†å°±äº¤ç»™Messageçš„ç›®æ ‡Handlerå»å¤„ç†ã€‚
             msg.target.dispatchMessage(msg);
         }
     }
 
     /**
-     * »ñÈ¡µ±Ç°Ïß³ÌµÄLooper
+     * è·å–å½“å‰çº¿ç¨‹çš„Looper
      * @return
      */
     public static Looper myLooper(){ return sThreadLocal.get();}

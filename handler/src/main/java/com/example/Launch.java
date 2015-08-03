@@ -3,7 +3,7 @@ package com.example;
 import com.example.ui.UIThread;
 
 public class Launch {
-    //这里模拟系统进程
+    //杩欓噷妯℃嫙绯荤粺杩涚▼
     public static void main(String[] args) {
         new UIThread().start();
     }

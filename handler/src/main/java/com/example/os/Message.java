@@ -5,7 +5,7 @@ package com.example.os;
  */
 public class Message {
 
-    //Ò»´ó¶Ñ¿ÉĞ¯´øÊôĞÔ
+    //ä¸€å¤§å †å¯æºå¸¦å±æ€§
     public int what;
     public int arg1;
     public int arg2;
@@ -15,8 +15,8 @@ public class Message {
     Runnable callback;
 
     /**
-     * Ä¿±êHandler¡£
-     * Ò»°ã¶¼ÊÇ·¢³ö´ËMessageµÄHandler.
+     * ç›®æ ‡Handlerã€‚
+     * ä¸€èˆ¬éƒ½æ˜¯å‘å‡ºæ­¤Messageçš„Handler.
      */
     Handler target;
 
