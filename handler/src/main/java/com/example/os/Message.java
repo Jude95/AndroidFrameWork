@@ -4,27 +4,24 @@ package com.example.os;
  * Created by Mr.Jude on 2015/8/3.
  */
 public class Message {
-    int what;
+
+    //一大堆可携带属性
+    public int what;
+    public int arg1;
+    public int arg2;
+    public Object obj;
+
+
     Runnable callback;
+
+    /**
+     * 目标Handler。
+     * 一般都是发出此Message的Handler.
+     */
+    Handler target;
 
     public Message(Runnable callback, int what) {
         this.callback = callback;
         this.what = what;
-    }
-
-    public int getWhat() {
-        return what;
-    }
-
-    public void setWhat(int what) {
-        this.what = what;
-    }
-
-    public Runnable getCallback() {
-        return callback;
-    }
-
-    public void setCallback(Runnable callback) {
-        this.callback = callback;
     }
 }
